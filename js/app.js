@@ -90,30 +90,12 @@ function updateUI(screen) {
   }
 }
 
-// ===== SPLASH SCREEN =====
-function initSplash() {
-  const splash = document.getElementById('splash-screen');
-  if (!splash) return;
-  // Le splash disparaît après 2 secondes
-  setTimeout(() => {
-    splash.classList.add('hide');
-    splash.addEventListener('transitionend', () => {
-      splash.remove();
-    }, { once: true });
-  }, 2000);
-}
-
 // ===== INITIALISATION GÉNÉRALE =====
 document.addEventListener('DOMContentLoaded', () => {
-  // Splash
-  initSplash();
-
   // Navigation
   document.getElementById('go-to-chat')?.addEventListener('click', () => switchTo('chat'));
   document.getElementById('back-button')?.addEventListener('click', goBack);
   document.getElementById('header-logo')?.addEventListener('click', () => switchTo('presentation'));
-  // Bouton inscription depuis le menu trois points (géré dans chat.js, mais on peut aussi le faire ici)
-  // On écoute aussi le clic sur "menu-register" (dans chat.js) qui appelle switchTo('inscription')
 
   // Thème
   const themeToggle = document.getElementById('themeToggle');
@@ -178,6 +160,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initChat();
   initForm();
 
-  // Démarrer sur la présentation
+  // Démarrage immédiat sur la présentation
   switchTo('presentation');
 });
